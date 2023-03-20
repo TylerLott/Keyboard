@@ -8,7 +8,7 @@ from kmk.modules.capsword import CapsWord
 from kmk.modules.modtap import ModTap
 from kmk.handlers.sequences import send_string, simple_key_sequence
 
-from hidden import USERNAME, PASSWORD, USER_PASS_SEQ
+from hidden import PASSWORD, USER_PASS_SEQ
 
 keyboard = KMKKeyboard()
 
@@ -65,53 +65,52 @@ L_CTL = KC.MT(KC.L, KC.RCTRL)
 # TODO: get keymap from other keyboard
 keyboard.keymap = [
     [  #QWERTY
-        KC.ESC,    KC.Q,    KC.W,    KC.E,    KC.R,    KC.T,                         KC.Y,    KC.U,    KC.I,    KC.O,   KC.P,  KC.BSPC,\
-        KC.LCTL,   KC.A,   S_CTL,    D_ALT,  F_GUI,    KC.G,                         KC.H,   J_GUI,   K_ALT,   L_CTL, KC.SCLN, KC.QUOT,\
-        KC.CW,     KC.Z,    KC.X,    KC.C,    KC.V,    KC.B,                         KC.N,    KC.M, KC.COMM,  KC.DOT, KC.SLSH, KC.RSFT,\
+        KC.ESC,    KC.Q,    KC.W,    KC.E,    KC.R,    KC.T,                         KC.Y,    KC.U,    KC.I,    KC.O,   KC.P,  KC.GRV,\
+        KC.LCTL,   KC.A,   S_CTL,    D_ALT,  F_GUI,    KC.G,                         KC.H,   J_GUI,   K_ALT,   L_CTL, KC.SCLN, KC.ENT,\
+        KC.CW,     KC.Z,    KC.X,    KC.C,    KC.V,    KC.B,                         KC.N,    KC.M, KC.COMM,  KC.DOT, KC.SLSH, KC.BSLS,\
                                              NAV_M,    SYMB,  KC.LSFT,   KC.BSPC,  KC.SPC,    NUMB,
     ],
     [  #SYMB
-        KC.ESC,   KC.N1,   KC.N2,   KC.N3,   KC.N4,   KC.N5,                         KC.N6,   KC.N7,  KC.N8,   KC.N9,   KC.N0, KC.BSPC,\
-        KC.LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        KC.LEFT, KC.DOWN, KC.UP,   KC.RIGHT, XXXXXXX, XXXXXXX,\
-        KC.LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-                                            KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
+        KC.ESC,   KC.N1,   KC.N2,   KC.N3,   KC.N4,   KC.N5,                         KC.N6,     KC.N7,   KC.N8,   KC.N9,   KC.N0, _______,\
+        _______, _______, KC.LCTL, KC.LALT, KC.LGUI, _______,                        _______, KC.RGUI, KC.RALT,KC.RCTRL, _______, _______,\
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+                                               FUNC,    CUST,  _______,   _______,   _______, NUMB,
     ],
     [  #NUM
         KC.ESC, KC.EXLM,   KC.AT, KC.HASH,  KC.DLR, KC.PERC,                         KC.CIRC, KC.AMPR, KC.ASTR, KC.LPRN, KC.RPRN, KC.BSPC,\
-        KC.LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        KC.MINS,  KC.EQL, KC.LCBR, KC.RCBR, KC.PIPE,  KC.GRV,\
-        KC.LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        KC.UNDS, KC.PLUS, KC.LBRC, KC.RBRC, KC.BSLS, KC.TILD,\
+        KC.LCTL, _______, _______, _______, _______, _______,                        KC.MINS,  KC.EQL, KC.LCBR, KC.RCBR, KC.PIPE,  KC.GRV,\
+        KC.LSFT, _______, _______, _______, _______, _______,                        KC.UNDS, KC.PLUS, KC.LBRC, KC.RBRC, KC.BSLS, KC.TILD,\
                                             KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
     ],
     [  #NAV_M (mac navigation)
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
                                             KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
     ]
     ,
     [  #NAV_W (windows navigation)
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
                                             KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
     ],
     [  #FUNC
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
                                             KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
     ],
     [  #CUST
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
                                             KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
     ],
-    ,
     [  #PASS
-        RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______,  _______,  _______,  _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
+        _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,\
                                             KC.LGUI,   LOWER,  ADJUST,     KC.ENT,   RAISE,  KC.RALT,
     ]
 ]
