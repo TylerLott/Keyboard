@@ -18,13 +18,12 @@ keyboard = KMKKeyboard()
 # KEEBR - Right
 split = Split(split_type=SplitType.UART, data_pin=keyboard.rx_pin, data_pin2=keyboard.tx_pin, use_pio=True)
 layers_ext = Layers()
-caps_word=CapsWord()
 modtap = ModTap()
 # TODO: write oled extension
 # TODO: write wpm module
 
 # add to keyboard
-keyboard.modules = [layers_ext, split, caps_word, modtap]
+keyboard.modules = [layers_ext, split, modtap]
 
 ############### OLED ###########################
 
@@ -59,6 +58,22 @@ J_GUI = KC.MT(KC.J, KC.RGUI, tap_interrupted=False, prefer_hold=False)
 K_ALT = KC.MT(KC.K, KC.RALT, tap_interrupted=False, prefer_hold=False)
 L_CTL = KC.MT(KC.L, KC.RCTRL, tap_interrupted=False, prefer_hold=False)
 
+# Combo modifiers
+CAT = KC.LALT(KC.TAB)
+CATH = KC.LCA(KC.TAB)
+CSE = KC.LCS(KC.ESC)
+CAD = KC.LCA(KC.DEL)
+
+############## CAPS WORDS ####################
+
+# Configuration constants
+IGNORE_CAPS_WORD_KEYS = [F_GUI,D_ALT,S_CTL,J_GUI,K_ALT,L_CTL]
+
+caps_word=CapsWord()
+
+caps_word.keys_ignored = IGNORE_CAPS_WORD_KEYS
+keyboard.modules.append(caps_word)
+
 ############## KEYMAP ########################
 
 # TODO: get keymap from other keyboard
@@ -82,10 +97,10 @@ keyboard.keymap = [
                                             _______,   SYMB,  _______,     KC.DEL,   _______,    CUST,
     ],
     [  #NAV_M (mac navigation)
-        _______,   KC.F1,    KC.F2,  KC.F3,   KC.F4,   KC.F5,                     KC.F6,     KC.F7,   KC.F8,    KC.F9,  KC.F10,  KC.F11,\
-        _______, KC.LSFT,  KC.LCTL,KC.LALT, KC.LGUI, _______,                     KC.LEFT, KC.DOWN,   KC.UP, KC.RIGHT, _______, _______,\
+        _______,   KC.F1,    KC.F2,  KC.F3,   KC.F4,   KC.F5,                     KC.F6,     KC.F7,   KC.F8,    KC.F9,  KC.F10,     CAD,\
+        _______, KC.LSFT,  KC.LCTL,KC.LALT, KC.LGUI, _______,                     KC.LEFT, KC.DOWN,   KC.UP, KC.RIGHT, _______,     CSE,\
         _______, _______, _______, _______, _______, _______,                     KC.HOME, KC.PGDN, KC.PGUP,   KC.END, _______, _______,\
-                                            NAV_M,   _______,  _______,  _______, _______,    CUST,
+                                            NAV_M,   _______,  _______,      CAT,    CATH,    CUST,
     ]
     ,
     [  #NAV_W (windows navigation) TODO
